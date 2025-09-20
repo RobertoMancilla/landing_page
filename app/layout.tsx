@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Aleaciones Metálicas - Especialistas en Aleaciones Industriales",
+  title: "Aludeox - Especialistas en Aleaciones Industriales",
   description:
     "Empresa líder en aleaciones metálicas con certificación ISO. Soluciones personalizadas para tu industria.",
 };

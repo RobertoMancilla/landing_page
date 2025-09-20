@@ -1,18 +1,43 @@
 "use client";
 
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 import Image from "next/image";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 
 const navigation = [
-  { name: "Inicio", href: "#" },
-  { name: "Quiénes somos", href: "#" },
+  { name: "Inicio", href: "/" },
+  { name: "Quiénes somos", href: "/about" },
   { name: "Productos", href: "#" },
 ];
 
 export function SiteHeader() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
+
+  // Función para determinar si un enlace está activo
+  const isActiveLink = (href: string) => {
+    if (href === "/") {
+      return pathname === "/";
+    }
+    return pathname === href;
+  };
+
+  // Función para obtener las clases del enlace
+  const getLinkClasses = (href: string, isMobile = false) => {
+    const isActive = isActiveLink(href);
+    const baseClasses = isMobile
+      ? "block px-3 py-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded-sm"
+      : "text-base font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 px-1 py-0.5 relative";
+
+    if (isActive) {
+      return `${baseClasses} text-primary after:content-[''] after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-primary`;
+    }
+
+    return `${baseClasses} text-muted-foreground hover:text-primary`;
+  };
 
   return (
     <header className="sticky top-0 z-50 w-full bg-background border-b border-border">
@@ -22,7 +47,7 @@ export function SiteHeader() {
           {/* LEFT cluster: logo + navegación */}
           <div className="flex items-center gap-6">
             {/* Logo */}
-            <a href="#" className="inline-block" aria-label="Inicio">
+            <Link href="/" className="inline-block" aria-label="Inicio">
               <div className="relative h-8 w-32 md:h-10 md:w-40">
                 <Image
                   src="/secondary_logo.png"
@@ -32,7 +57,7 @@ export function SiteHeader() {
                   priority
                 />
               </div>
-            </a>
+            </Link>
 
             {/* Desktop Navigation */}
             <nav
@@ -40,22 +65,20 @@ export function SiteHeader() {
               aria-label="Navegación principal"
             >
               {navigation.map((item) => (
-                <a
+                <Link
                   key={item.name}
                   href={item.href}
-                  className="text-base font-medium text-muted-foreground hover:text-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded-sm px-1 py-0.5"
+                  className={getLinkClasses(item.href)}
                 >
                   {item.name}
-                </a>
+                </Link>
               ))}
             </nav>
           </div>
 
           {/* RIGHT: CTA (se queda donde está) */}
           <div className="hidden md:flex">
-            <Button>
-              Contacto
-            </Button>
+            <Button>Contacto</Button>
           </div>
 
           {/* Mobile menu button */}
@@ -80,14 +103,14 @@ export function SiteHeader() {
           <div className="md:hidden">
             <div className="space-y-1 px-2 pb-3 pt-2 border-t border-border">
               {navigation.map((item) => (
-                <a
+                <Link
                   key={item.name}
                   href={item.href}
-                  className="block px-3 py-2 text-foreground hover:text-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded-sm"
+                  className={getLinkClasses(item.href, true)}
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   {item.name}
-                </a>
+                </Link>
               ))}
               <div className="px-3 py-2">
                 <Button className="w-full">Contacto</Button>

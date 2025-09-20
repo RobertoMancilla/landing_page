@@ -3,9 +3,8 @@ import { Phone, Mail, MapPin, Clock } from "lucide-react";
 
 const navigation = [
   { name: "Inicio", href: "#" },
+  { name: "Quiénes Somos", href: "#" },
   { name: "Productos", href: "#" },
-  { name: "Servicios", href: "#" },
-  { name: "Industrias", href: "#" },
   { name: "Contacto", href: "#" },
 ];
 
