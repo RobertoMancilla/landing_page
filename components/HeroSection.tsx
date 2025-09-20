@@ -57,7 +57,7 @@ export function Hero() {
           */}
           <div className="relative w-full h-full min-h-[400px]">
             <Image
-              src="/photo.png"
+              src="images/photo.png"
               alt="Imagen de aleaciones metálicas"
               fill
               /* 🔧 object-cover + object-center: rellena completamente el contenedor */
