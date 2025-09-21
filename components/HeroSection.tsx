@@ -2,19 +2,20 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { FeatureIcons } from "@/components/FeatureIcons";
 import { Section } from "@/components/layout/Section";
+import Link from "next/link";
 
 export function Hero() {
   return (
     <Section py="sm">
-      {/* 🔧 items-stretch: iguala la altura de ambas columnas */}
+      {/* items-stretch: iguala la altura de ambas columnas */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-stretch">
         {/* LEFT */}
         <div className="flex flex-col justify-start">
-          {/* 🔧 max-w-xl: ancho común; aumentamos tamaño del logo */}
+          {/* max-w-xl: ancho común; aumentamos tamaño del logo */}
           <div className="space-y-6 max-w-xl">
             <div className="relative w-full h-20 md:h-24">
               {" "}
-              {/* ⬆️ antes h-12 */}
+              {/* */}
               <Image
                 src="/secondary_logo.png"
                 alt="main logo business"
@@ -37,7 +38,9 @@ export function Hero() {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-3">
-              <Button size="lg">Solicita tu cotización</Button>
+              <Button size="lg" asChild>
+                <Link href="/contact">Solicita tu cotización</Link>
+              </Button>
               <Button variant="outline" size="lg">
                 Descargar catálogo
               </Button>
@@ -57,7 +60,7 @@ export function Hero() {
           */}
           <div className="relative w-full h-full min-h-[400px]">
             <Image
-              src="images/photo.png"
+              src="/images/photo.png"
               alt="Imagen de aleaciones metálicas"
               fill
               /* 🔧 object-cover + object-center: rellena completamente el contenedor */

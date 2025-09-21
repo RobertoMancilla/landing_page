@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { SiteHeader } from "@/components/Header";
 import { SiteFooter } from "@/components/FooterSection";
+import { CTA } from "@/components/Cta";
 import { Card, CardContent } from "@/components/ui/card";
 import { Section } from "@/components/layout/Section";
 import {
@@ -15,6 +16,11 @@ import {
   Recycle,
   Cog,
   Users,
+  FileText,
+  GraduationCap,
+  Clock,
+  CheckCircle,
+  TrendingUp,
 } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -91,8 +97,14 @@ export default function AboutUsPage() {
 
   const certifications = [
     "ISO 9001:2015",
+    "ISO 14001:2015",
+    "OHSAS 18001:2007",
+  ];
+
+  const normatives = [
     "NOM-043-SEMARNAT-1993",
     "NOM-085-SEMARNAT-2011",
+    "NOM-052-SEMARNAT-2005",
   ];
 
   return (
@@ -118,7 +130,7 @@ export default function AboutUsPage() {
 
           {/* Content with aligned image */}
           <div className="grid grid-cols-12 gap-8 lg:gap-12 items-start">
-            <div className="col-span-12 md:col-span-7">
+            <div className="col-span-12 md:col-span-6">
               <div className="space-y-3">
                 <p className="text-base lg:text-lg text-muted-foreground leading-relaxed text-justify">
                   En ALUDEOX nos dedicamos a la fundición y transformación de
@@ -143,7 +155,7 @@ export default function AboutUsPage() {
                 </p>
               </div>
             </div>
-            <div className="col-span-12 md:col-span-5">
+            <div className="col-span-12 md:col-span-6">
               <div className="relative aspect-[4/3] rounded-lg overflow-hidden border border-border">
                 <Image
                   src="/images/photo.png"
@@ -166,7 +178,7 @@ export default function AboutUsPage() {
         >
           <h2
             id="timeline-title"
-            className="text-3xl font-bold text-center text-foreground mb-12"
+            className="text-3xl lg:text-4xl font-bold text-center text-foreground mb-12"
           >
             Nuestra Trayectoria
           </h2>
@@ -205,11 +217,11 @@ export default function AboutUsPage() {
                             <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-primary text-white text-xs font-bold">
                               {item.number}
                             </span>
-                            <h3 className="text-lg font-bold text-foreground group-hover:text-primary transition-colors">
+                            <h3 className="text-base lg:text-lg font-bold text-foreground group-hover:text-primary transition-colors">
                               {item.title}
                             </h3>
                           </div>
-                          <p className="text-muted-foreground leading-relaxed">
+                          <p className="text-base lg:text-lg text-muted-foreground leading-relaxed">
                             {item.description}
                           </p>
                         </div>
@@ -239,11 +251,11 @@ export default function AboutUsPage() {
                         <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-primary text-white text-xs font-bold">
                           {item.number}
                         </span>
-                        <h3 className="text-base font-bold text-foreground">
+                        <h3 className="text-base lg:text-lg font-bold text-foreground">
                           {item.title}
                         </h3>
                       </div>
-                      <p className="text-muted-foreground leading-relaxed">
+                      <p className="text-base lg:text-lg text-muted-foreground leading-relaxed">
                         {item.description}
                       </p>
                     </div>
@@ -269,11 +281,11 @@ export default function AboutUsPage() {
                   <div className="bg-white rounded-lg p-3 border border-border shadow-sm">
                     <div className="flex items-center gap-2 mb-2">
                       <item.icon className="h-4 w-4 text-primary" />
-                      <h3 className="font-bold text-foreground text-sm leading-tight">
+                      <h3 className="font-bold text-foreground text-base leading-tight">
                         {item.title}
                       </h3>
                     </div>
-                    <p className="text-muted-foreground text-sm leading-relaxed">
+                    <p className="text-base text-muted-foreground leading-relaxed">
                       {item.description}
                     </p>
                   </div>
@@ -287,19 +299,19 @@ export default function AboutUsPage() {
         <Section id="valores" ariaLabelledby="values-title" py="sm">
           <h2
             id="values-title"
-            className="text-3xl font-bold text-center text-foreground mb-12"
+            className="text-3xl lg:text-4xl font-bold text-center text-foreground mb-12"
           >
-            Nuestros Valores
+            Valores
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
             {values.map((value, index) => (
               <Card key={index} className="text-center border-0 shadow-none">
                 <CardContent className="p-6">
                   <value.icon className="h-12 w-12 mx-auto text-primary mb-4" />
-                  <h3 className="font-semibold text-foreground mb-2">
+                  <h3 className="text-base lg:text-lg font-semibold text-foreground mb-2">
                     {value.title}
                   </h3>
-                  <p className="text-muted-foreground leading-relaxed">
+                  <p className="text-base lg:text-lg text-muted-foreground leading-relaxed">
                     {value.description}
                   </p>
                 </CardContent>
@@ -317,12 +329,14 @@ export default function AboutUsPage() {
         >
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <Card>
-              <CardContent className="p-8">
-                <div className="flex items-center justify-center gap-3 mb-4">
-                  <Target className="h-8 w-8 text-primary" />
-                  <h2 className="text-2xl font-bold text-foreground">Misión</h2>
+              <CardContent className="p-4">
+                <div className="flex items-center justify-center gap-2 mb-2">
+                  <Target className="h-6 w-6 text-primary" />
+                  <h2 className="text-xl lg:text-2xl font-bold text-foreground">
+                    Misión
+                  </h2>
                 </div>
-                <p className="text-muted-foreground leading-relaxed text-center">
+                <p className="text-base lg:text-lg text-muted-foreground leading-relaxed text-center">
                   Fabricar y comercializar aleaciones metálicas con materiales
                   primarios y reciclados para las industrias siderúrgicas, del
                   aluminio, del cobre y en general, adaptando tecnologías para
@@ -333,12 +347,14 @@ export default function AboutUsPage() {
             </Card>
 
             <Card>
-              <CardContent className="p-8">
-                <div className="flex items-center justify-center gap-3 mb-4">
-                  <Eye className="h-8 w-8 text-primary" />
-                  <h2 className="text-2xl font-bold text-foreground">Visión</h2>
+              <CardContent className="p-4">
+                <div className="flex items-center justify-center gap-2 mb-2">
+                  <Eye className="h-6 w-6 text-primary" />
+                  <h2 className="text-xl lg:text-2xl font-bold text-foreground">
+                    Visión
+                  </h2>
                 </div>
-                <p className="text-muted-foreground leading-relaxed text-center">
+                <p className="text-base lg:text-lg text-muted-foreground leading-relaxed text-center">
                   Consolidarnos como referentes en los mercados que representan
                   un reto tecnológico, ofreciendo procesos innovadores y
                   soluciones de calidad para la industria de la transformación,
@@ -350,26 +366,124 @@ export default function AboutUsPage() {
           </div>
         </Section>
 
+        {/* Technical Team */}
+        <Section id="equipo-tecnico" ariaLabelledby="team-title" py="sm">
+          <h2
+            id="team-title"
+            className="text-3xl lg:text-4xl font-bold text-center text-foreground mb-6"
+          >
+            Nuestro Equipo Técnico
+          </h2>
+          <p className="text-center text-muted-foreground text-base lg:text-lg leading-relaxed mb-12 max-w-3xl mx-auto">
+            Contamos con un equipo multidisciplinario de ingenieros
+            metalúrgicos, químicos y especialistas en procesos industriales con
+            décadas de experiencia combinada.
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+            {/* Ingenieros especializados */}
+            <div className="text-center">
+              <div className="flex justify-center mb-4">
+                <GraduationCap className="h-12 w-12 text-primary" />
+              </div>
+              <div className="text-3xl font-bold text-primary mb-2">25+</div>
+              <p className="text-base lg:text-lg text-foreground font-medium">
+                Ingenieros especializados
+              </p>
+            </div>
+
+            {/* Años de experiencia */}
+            <div className="text-center">
+              <div className="flex justify-center mb-4">
+                <Clock className="h-12 w-12 text-primary" />
+              </div>
+              <div className="text-3xl font-bold text-primary mb-2">150+</div>
+              <p className="text-base lg:text-lg text-foreground font-medium">
+                Años de experiencia combinada
+              </p>
+            </div>
+
+            {/* Proyectos completados */}
+            <div className="text-center">
+              <div className="flex justify-center mb-4">
+                <CheckCircle className="h-12 w-12 text-primary" />
+              </div>
+              <div className="text-3xl font-bold text-primary mb-2">500+</div>
+              <p className="text-base lg:text-lg text-foreground font-medium">
+                Proyectos completados
+              </p>
+            </div>
+
+            {/* Índice de calidad */}
+            <div className="text-center">
+              <div className="flex justify-center mb-4">
+                <TrendingUp className="h-12 w-12 text-primary" />
+              </div>
+              <div className="text-3xl font-bold text-primary mb-2">99.9%</div>
+              <p className="text-base lg:text-lg text-foreground font-medium">
+                Índice de calidad
+              </p>
+            </div>
+          </div>
+        </Section>
+
         {/* Certifications */}
         <Section id="certificaciones" ariaLabelledby="cert-title" py="sm">
           <h2
             id="cert-title"
-            className="text-3xl font-bold text-center text-foreground mb-12"
+            className="text-3xl lg:text-4xl font-bold text-center text-foreground mb-6"
           >
-            Certificaciones
+            Certificaciones y Normativas
           </h2>
-          <div className="flex flex-wrap justify-center gap-6">
-            {certifications.map((cert, index) => (
-              <div
-                key={index}
-                className="bg-white border border-border rounded-lg px-6 py-4 shadow-sm flex items-center gap-3"
-              >
-                <Award className="h-5 w-5 text-primary" />
-                <span className="font-medium text-foreground">{cert}</span>
+          <p className="text-center text-muted-foreground text-base lg:text-lg leading-relaxed mb-12 max-w-3xl mx-auto">
+            Nuestro compromiso con la calidad está respaldado por las
+            certificaciones más exigentes de la industria nacional e
+            internacional.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            {/* Certificaciones Column */}
+            <div>
+              <h3 className="text-lg lg:text-xl font-semibold text-center text-foreground mb-6">
+                Certificaciones de Calidad
+              </h3>
+              <div className="space-y-4">
+                {certifications.map((cert, index) => (
+                  <div
+                    key={index}
+                    className="bg-white border border-border rounded-lg px-6 py-4 shadow-sm flex items-center justify-center gap-3"
+                  >
+                    <Award className="h-5 w-5 text-primary" />
+                    <span className="font-medium text-foreground">{cert}</span>
+                  </div>
+                ))}
               </div>
-            ))}
+            </div>
+
+            {/* Normativas Column */}
+            <div>
+              <h3 className="text-lg lg:text-xl font-semibold text-center text-foreground mb-6">
+                Normativas Mexicanas
+              </h3>
+              <div className="space-y-4">
+                {normatives.map((norm, index) => (
+                  <div
+                    key={index}
+                    className="bg-white border border-border rounded-lg px-6 py-4 shadow-sm flex items-center justify-center gap-3"
+                  >
+                    <FileText className="h-5 w-5 text-primary" />
+                    <span className="font-medium text-foreground">{norm}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </Section>
+
+        {/* CTA Section */}
+        <CTA
+          title="¿Quieres conocer más sobre nosotros?"
+          description="Agenda una visita a nuestras instalaciones y conoce de primera mano nuestros procesos de calidad y compromiso con la excelencia."
+          buttonText="Agenda una visita"
+        />
       </main>
       <SiteFooter />
     </div>

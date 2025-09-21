@@ -1,9 +1,9 @@
 // page.tsx
-import { SiteHeader } from "@/components/Header"
-import { Hero } from "@/components/HeroSection"
-import { Specialties } from "@/components/SpecialtiesSection"
-import { SiteFooter } from "@/components/FooterSection"
-import { CTA } from "@/components/Cta"
+import { SiteHeader } from "@/components/Header";
+import { Hero } from "@/components/HeroSection";
+import { Specialties } from "@/components/SpecialtiesSection";
+import { SiteFooter } from "@/components/FooterSection";
+import { CTA } from "@/components/Cta";
 
 export default function Home() {
   return (
@@ -16,5 +16,5 @@ export default function Home() {
       </main>
       <SiteFooter />
     </div>
-  )
+  );
 }

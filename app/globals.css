@@ -46,11 +46,11 @@
   --radius: 0.625rem;
 
   /* (Opcional) Charts/Sidebar. Si no los usas, puedes borrar estos: */
-  --chart-1: oklch(0.646 0.222 41.116);
+  /* --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
   --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
+  --chart-5: oklch(0.769 0.188 70.08); */
 
   --sidebar: oklch(0.985 0 0);
   --sidebar-foreground: oklch(0.145 0 0);
@@ -65,7 +65,7 @@
 /* =========
    THEME: DARK (solo si agregas la clase .dark en <html> o <body>)
    ========= */
-.dark {
+/* .dark {
   --background: oklch(0.145 0 0);
   --foreground: oklch(0.985 0 0);
 
@@ -74,7 +74,6 @@
   --popover: oklch(0.205 0 0);
   --popover-foreground: oklch(0.985 0 0);
 
-  /* Mantén la marca como primario también en dark */
   --primary: var(--brand-orange);
   --primary-foreground: oklch(0.985 0 0);
 
@@ -87,15 +86,13 @@
   --accent: oklch(0.269 0 0);
   --accent-foreground: oklch(0.985 0 0);
 
-  /* Mejor contraste en dark */
   --destructive: oklch(0.704 0.191 22.216);
   --destructive-foreground: oklch(0.985 0 0);
 
   --border: oklch(1 0 0 / 10%);
   --input: oklch(1 0 0 / 15%);
   --ring: oklch(0.556 0 0);
-
-}
+} */
 /* =========
    Tailwind v4 design tokens: mapeo ÚNICO
    ========= */
@@ -171,14 +168,14 @@ body {
   outline-offset: 2px;
 }
 
-/* Reduced motion */
+/* Reduced motion
 @media (prefers-reduced-motion: reduce) {
   * {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
-}
+} */
 
 /* Tailwind base layer: alinea utilidades con tokens */
 @layer base {
@@ -187,5 +184,20 @@ body {
   }
   body {
     @apply bg-background text-foreground;
+  }
+
+  /* Estilos globales para inputs, select y textarea */
+  input[data-slot="input"],
+  textarea[data-slot="textarea"],
+  button[data-slot="select-trigger"] {
+    border-color: var(--color-primary);
+  }
+
+  input[data-slot="input"]:focus-visible,
+  textarea[data-slot="textarea"]:focus-visible,
+  button[data-slot="select-trigger"]:focus-visible {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: none;
   }
 }

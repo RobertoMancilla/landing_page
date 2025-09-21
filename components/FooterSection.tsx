@@ -1,12 +1,7 @@
 import Image from "next/image";
+import Link from "next/link";
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
-
-const navigation = [
-  { name: "Inicio", href: "#" },
-  { name: "Quiénes Somos", href: "#" },
-  { name: "Productos", href: "#" },
-  { name: "Contacto", href: "#" },
-];
+import { navigation, footerNavigation, footerLinks } from "@/lib/navigation";
 
 export function SiteFooter() {
   return (
@@ -25,8 +20,9 @@ export function SiteFooter() {
                 />
               </div>
               <p className="text-sm text-muted-foreground leading-relaxed">
-                Especialistas en aleaciones metálicas con más de 20 años de
-                experiencia en el desarrollo de soluciones industriales.
+                Especialistas en fundición y transformación de aleaciones de
+                aluminio y cobre con más de 30 años de experiencia en soluciones
+                industriales.
               </p>
             </div>
 
@@ -36,14 +32,14 @@ export function SiteFooter() {
                 Navegación
               </h3>
               <ul className="space-y-2">
-                {navigation.map((item) => (
+                {footerNavigation.map((item) => (
                   <li key={item.name}>
-                    <a
+                    <Link
                       href={item.href}
                       className="text-sm text-muted-foreground hover:text-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded-sm"
                     >
                       {item.name}
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>
@@ -61,14 +57,14 @@ export function SiteFooter() {
                 </div>
                 <div className="flex items-center gap-2">
                   <Mail className="h-4 w-4 text-primary" />
-                  <span>info@aleaciones.mx</span>
+                  <span>ventas@aludeox.com</span>
                 </div>
                 <div className="flex items-start gap-2">
                   <MapPin className="h-4 w-4 mt-0.5 flex-shrink-0 text-primary" />
                   <div className="leading-relaxed">
-                    <p>Lic. Ramiro Hernández 430,</p>
-                    <p>Minerales, Baja California, 44008</p>
-                    <p>Las Pintitas, Jal.</p>
+                    <p>Zona Industrial Norte,</p>
+                    <p>Guadalajara, Jalisco</p>
+                    <p>C.P. 02300</p>
                   </div>
                 </div>
               </div>
@@ -97,21 +93,18 @@ export function SiteFooter() {
         <div className="border-t border-brand-gray-100 py-6">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <p className="text-sm text-muted-foreground">
-              © 2024 Aleaciones Metálicas. Todos los derechos reservados.
+              © 2024 ALUDEOX. Todos los derechos reservados.
             </p>
             <div className="flex space-x-6">
-              <a
-                href="#"
-                className="text-sm text-muted-foreground hover:text-primary transition-colors"
-              >
-                Política de Privacidad
-              </a>
-              <a
-                href="#"
-                className="text-sm text-muted-foreground hover:text-primary transition-colors"
-              >
-                Términos de Servicio
-              </a>
+              {footerLinks.legal.map((item) => (
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                >
+                  {item.name}
+                </Link>
+              ))}
             </div>
           </div>
         </div>
