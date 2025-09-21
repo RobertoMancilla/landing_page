@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
-import { navigation, footerNavigation, footerLinks } from "@/lib/navigation";
+import { footerNavigation, footerLinks } from "@/lib/navigation";
 
 export function SiteFooter() {
   return (

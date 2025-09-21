@@ -5,30 +5,30 @@ import {
   CardTitle,
   CardDescription,
 } from "@/components/ui/card";
-import { Zap, Cog, Shield, Wrench } from "lucide-react";
+import { BrickWallShield, Layers, Recycle, MonitorCog } from "lucide-react";
 import { Section } from "@/components/layout/Section";
 
 const specialties = [
   {
-    icon: Zap,
+    icon: BrickWallShield,
     title: "Aleaciones de Aluminio",
     description:
       "Aleaciones ligeras y resistentes para aplicaciones aeroespaciales, automotrices y de construcción con excelente resistencia a la corrosión.",
   },
   {
-    icon: Cog,
+    icon: Layers,
     title: "Aleaciones de Cobre",
     description:
       "Soluciones conductivas de alta calidad para aplicaciones eléctricas, electrónicas y sistemas de intercambio térmico industrial.",
   },
   {
-    icon: Shield,
+    icon: Recycle,
     title: "Reciclaje de Metales",
     description:
       "Aceros aleados de alta resistencia para aplicaciones estructurales, herramientas industriales y componentes de maquinaria pesada.",
   },
   {
-    icon: Wrench,
+    icon: MonitorCog,
     title: "Control de Calidad",
     description:
       "Desarrollo de aleaciones específicas según las necesidades técnicas de tu proyecto, con análisis metalúrgico completo.",

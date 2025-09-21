@@ -8,12 +8,11 @@ import { Section } from "@/components/layout/Section";
 import {
   Factory,
   Lightbulb,
-  Shield,
+  ShieldUser,
   Leaf,
   Target,
   Eye,
   Award,
-  Recycle,
   Cog,
   Users,
   FileText,
@@ -70,7 +69,7 @@ export default function AboutUsPage() {
 
   const values = [
     {
-      icon: Shield,
+      icon: ShieldUser,
       title: "Compromiso",
       description:
         "Buscamos siempre la mejora continua de nuestros procesos, ofreciendo calidad y un trato personalizado a cada cliente.",
