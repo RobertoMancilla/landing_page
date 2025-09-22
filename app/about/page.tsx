@@ -96,14 +96,14 @@ export default function AboutUsPage() {
 
   const certifications = [
     "ISO 9001:2015",
-    "ISO 14001:2015",
-    "OHSAS 18001:2007",
+    // "ISO 14001:2015",
+    // "OHSAS 18001:2007",
   ];
 
   const normatives = [
     "NOM-043-SEMARNAT-1993",
     "NOM-085-SEMARNAT-2011",
-    "NOM-052-SEMARNAT-2005",
+    // "NOM-052-SEMARNAT-2005",
   ];
 
   return (
@@ -365,7 +365,7 @@ export default function AboutUsPage() {
           </div>
         </Section>
 
-        {/* Technical Team */}
+        {/* Technical Team
         <Section id="equipo-tecnico" ariaLabelledby="team-title" py="sm">
           <h2
             id="team-title"
@@ -379,7 +379,7 @@ export default function AboutUsPage() {
             décadas de experiencia combinada.
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
-            {/* Ingenieros especializados */}
+            {Ingenieros especializados }
             <div className="text-center">
               <div className="flex justify-center mb-4">
                 <GraduationCap className="h-12 w-12 text-primary" />
@@ -390,7 +390,7 @@ export default function AboutUsPage() {
               </p>
             </div>
 
-            {/* Años de experiencia */}
+            {Años de experiencia }
             <div className="text-center">
               <div className="flex justify-center mb-4">
                 <Clock className="h-12 w-12 text-primary" />
@@ -401,7 +401,7 @@ export default function AboutUsPage() {
               </p>
             </div>
 
-            {/* Proyectos completados */}
+            {Proyectos completados }
             <div className="text-center">
               <div className="flex justify-center mb-4">
                 <CheckCircle className="h-12 w-12 text-primary" />
@@ -412,7 +412,7 @@ export default function AboutUsPage() {
               </p>
             </div>
 
-            {/* Índice de calidad */}
+            {Índice de calidad }
             <div className="text-center">
               <div className="flex justify-center mb-4">
                 <TrendingUp className="h-12 w-12 text-primary" />
@@ -423,7 +423,7 @@ export default function AboutUsPage() {
               </p>
             </div>
           </div>
-        </Section>
+        </Section> */}
 
         {/* Certifications */}
         <Section id="certificaciones" ariaLabelledby="cert-title" py="sm">

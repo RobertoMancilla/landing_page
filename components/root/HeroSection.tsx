@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { FeatureIcons } from "@/components/FeatureIcons";
+import { FeatureIcons } from "@/components/root/FeatureIcons";
 import { Section } from "@/components/layout/Section";
 import Link from "next/link";
 

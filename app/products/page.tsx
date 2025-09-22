@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { ProductsPageContent } from "./components/ProductsPageContent";
+import { ProductsPageContent } from "../../components/products/ProductsPageContent";
 
 export const metadata: Metadata = {
   title: "Productos - ALUDEOX",

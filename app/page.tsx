@@ -1,7 +1,7 @@
 // page.tsx
 import { SiteHeader } from "@/components/Header";
-import { Hero } from "@/components/HeroSection";
-import { Specialties } from "@/components/SpecialtiesSection";
+import { Hero } from "@/components/root/HeroSection";
+import { Specialties } from "@/components/root/SpecialtiesSection";
 import { SiteFooter } from "@/components/FooterSection";
 import { CTA } from "@/components/Cta";
 

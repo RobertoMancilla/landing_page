@@ -209,11 +209,11 @@ export default function ContactPage() {
                         Nuestra Ubicación
                       </h3>
                       <p className="text-base lg:text-base text-muted-foreground leading-relaxed">
-                        Zona Industrial Norte
+                        Lic. Ramiro Hernández 430,
                         <br />
-                        Guadalajara, Jalisco
+                        Minerales, Baja California, 44008
                         <br />
-                        C.P. 02300
+                        Las Pintitas, Jal.
                       </p>
                     </div>
                   </div>
@@ -233,9 +233,7 @@ export default function ContactPage() {
                         </h3>
                       </div>
                       <p className="text-base lg:text-base text-muted-foreground leading-relaxed">
-                        +52 (55) 1234-5678
-                        <br />
-                        +52 (55) 8765-4321
+                        +52 (33) 3695-1086
                       </p>
                     </div>
                   </div>

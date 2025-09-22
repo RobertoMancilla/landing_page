@@ -53,18 +53,18 @@ export function SiteFooter() {
               <div className="space-y-3 text-sm text-muted-foreground">
                 <div className="flex items-center gap-2">
                   <Phone className="h-4 w-4 text-primary" />
-                  <span>+52 (55) 1234-5678</span>
+                  <span>+52 (33) 3695-1086</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Mail className="h-4 w-4 text-primary" />
-                  <span>ventas@aludeox.com</span>
+                  <span>contacto@aludeox.com</span>
                 </div>
                 <div className="flex items-start gap-2">
                   <MapPin className="h-4 w-4 mt-0.5 flex-shrink-0 text-primary" />
                   <div className="leading-relaxed">
-                    <p>Zona Industrial Norte,</p>
-                    <p>Guadalajara, Jalisco</p>
-                    <p>C.P. 02300</p>
+                    <p>Lic. Ramiro Hernández 430,</p>
+                    <p>Minerales, Baja California, 44008</p>
+                    <p>Las Pintitas, Jal.</p>
                   </div>
                 </div>
               </div>
