@@ -42,7 +42,7 @@ export function ProductModal({
 }: ProductModalProps) {
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-[900vw] w-full max-h-[85vh] overflow-y-auto m-1 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+      <DialogContent className="max-w-[900vw] w-full max-h-[85vh] md:max-h-[95vh] overflow-y-auto m-1 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
         <DialogHeader className="pb-4">
           <DialogTitle className="text-xl font-bold text-foreground">
             {title}

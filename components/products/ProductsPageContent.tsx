@@ -123,10 +123,10 @@ export function ProductsPageContent() {
     title: "Cono de Cobre Refinado",
     imageSrc: "/images/photo.png",
     specs: [
+      "*La composición química de este producto se adapta de acuerdo con los requisitos establecidos por el cliente.",
       "Peso: 800 - 1200 g",
       "Dimensiones: Altura 70 - 80 mm / Base 64 - 70 mm",
       "Punto de fusión: 1083 °C",
-      "La composición química de este producto se adapta de acuerdo con los requisitos establecidos por el cliente.",
     ],
     composition: [
       { nombre: "Cobre", formula: "Cu", min: "99.95%", max: undefined },

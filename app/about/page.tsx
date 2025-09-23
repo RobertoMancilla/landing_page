@@ -16,10 +16,6 @@ import {
   Cog,
   Users,
   FileText,
-  GraduationCap,
-  Clock,
-  CheckCircle,
-  TrendingUp,
 } from "lucide-react";
 
 export const metadata: Metadata = {
