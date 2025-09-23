@@ -97,23 +97,8 @@ export function ProductModal({
 
           {/* Fila 2: Imagen y Especificaciones en dos columnas */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {/* Columna 1: Imagen del producto */}
-            <div className="space-y-3">
-              <h3 className="text-base font-semibold text-foreground">
-                Producto
-              </h3>
-              <div className="relative aspect-square w-full max-w-sm">
-                <Image
-                  src={imageSrc}
-                  alt={`Imagen de ${title}`}
-                  fill
-                  className="rounded-md border border-border object-cover"
-                />
-              </div>
-            </div>
-
-            {/* Columna 2: Especificaciones principales */}
-            <div className="space-y-3">
+            {/* Especificaciones principales - Aparece primero en móvil, segunda en desktop */}
+            <div className="space-y-3 order-1 md:order-2">
               <h3 className="text-base font-semibold text-foreground">
                 Especificaciones Principales
               </h3>
@@ -129,6 +114,21 @@ export function ProductModal({
                     </li>
                   ))}
                 </ul>
+              </div>
+            </div>
+
+            {/* Imagen del producto - Aparece segunda en móvil, primera en desktop */}
+            <div className="space-y-3 order-2 md:order-1">
+              <h3 className="text-base font-semibold text-foreground">
+                Producto
+              </h3>
+              <div className="relative aspect-square w-full max-w-sm">
+                <Image
+                  src={imageSrc}
+                  alt={`Imagen de ${title}`}
+                  fill
+                  className="rounded-md border border-border object-cover"
+                />
               </div>
             </div>
           </div>
