@@ -5,7 +5,7 @@ import { footerNavigation, footerLinks } from "@/lib/navigation";
 
 export function SiteFooter() {
   return (
-    <footer className="bg-background border-t border-brand-gray-100">
+    <footer className="bg-[var(--brand-gray-800)] border-t border-brand-gray-200/20">
       <div className="mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-8">
         <div className="py-12">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -13,13 +13,13 @@ export function SiteFooter() {
             <div className="space-y-6">
               <div className="relative w-32 h-12">
                 <Image
-                  src="/secondary_logo.png"
+                  src="/images/secondary_logo.png"
                   alt="Logo Aleaciones Metálicas"
                   fill
-                  className="object-contain"
+                  className="object-contain brightness-0 invert"
                 />
               </div>
-              <p className="text-sm text-muted-foreground leading-relaxed">
+              <p className="text-sm text-white/80 leading-relaxed">
                 Especialistas en fundición y transformación de aleaciones de
                 aluminio y cobre con más de 30 años de experiencia en soluciones
                 industriales.
@@ -28,15 +28,13 @@ export function SiteFooter() {
 
             {/* Navigation */}
             <div className="space-y-4">
-              <h3 className="text-sm font-semibold text-foreground">
-                Navegación
-              </h3>
+              <h3 className="text-sm font-semibold text-white">Navegación</h3>
               <ul className="space-y-2">
                 {footerNavigation.map((item) => (
                   <li key={item.name}>
                     <Link
                       href={item.href}
-                      className="text-sm text-muted-foreground hover:text-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded-sm"
+                      className="text-sm text-white/70 hover:text-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--brand-gray-800)] rounded-sm"
                     >
                       {item.name}
                     </Link>
@@ -47,10 +45,8 @@ export function SiteFooter() {
 
             {/* Contact Info */}
             <div className="space-y-4">
-              <h3 className="text-sm font-semibold text-foreground">
-                Contacto
-              </h3>
-              <div className="space-y-3 text-sm text-muted-foreground">
+              <h3 className="text-sm font-semibold text-white">Contacto</h3>
+              <div className="space-y-3 text-sm text-white/70">
                 <div className="flex items-center gap-2">
                   <Phone className="h-4 w-4 text-primary" />
                   <span>+52 (33) 3695-1086</span>
@@ -72,15 +68,13 @@ export function SiteFooter() {
 
             {/* Horarios */}
             <div className="space-y-4">
-              <h3 className="text-sm font-semibold text-foreground">
-                Horarios
-              </h3>
-              <div className="space-y-2 text-sm text-muted-foreground">
+              <h3 className="text-sm font-semibold text-white">Horarios</h3>
+              <div className="space-y-2 text-sm text-white/70">
                 <div className="flex items-center gap-2">
                   <Clock className="h-4 w-4 text-primary" />
                   <div>
-                    <p>Lun - Vie: 8:00 - 18:00</p>
-                    <p>Sáb: 8:00 - 14:00</p>
+                    <p>Lun - Vie: 9:00 - 18:00</p>
+                    <p>Sáb: 9:00 - 14:00</p>
                     <p>Dom: Cerrado</p>
                   </div>
                 </div>
@@ -90,9 +84,9 @@ export function SiteFooter() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-brand-gray-100 py-6">
+        <div className="border-t border-white/10 py-6">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <p className="text-sm text-muted-foreground">
+            <p className="text-sm text-white/60">
               © 2024 ALUDEOX. Todos los derechos reservados.
             </p>
             <div className="flex space-x-6">
@@ -100,7 +94,7 @@ export function SiteFooter() {
                 <Link
                   key={item.name}
                   href={item.href}
-                  className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                  className="text-sm text-white/60 hover:text-primary transition-colors"
                 >
                   {item.name}
                 </Link>

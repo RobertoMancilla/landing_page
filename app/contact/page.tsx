@@ -153,11 +153,6 @@ export default function ContactPage() {
                         <SelectItem value="asesoria">
                           Asesoría Técnica
                         </SelectItem>
-                        <SelectItem value="visita">Agendar Visita</SelectItem>
-                        <SelectItem value="distribuidor">
-                          Ser Distribuidor
-                        </SelectItem>
-                        <SelectItem value="otro">Otro</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
@@ -196,38 +191,68 @@ export default function ContactPage() {
             </Card>
 
             {/* Contact Information */}
-            <div className="order-2 lg:order-2 space-y-6 lg:space-y-8 lg:flex lg:flex-col lg:justify-between lg:h-full">
+            <div className="order-2 lg:order-2 space-y-1 lg:space-y-1 lg:flex lg:flex-col lg:justify-between lg:h-full">
               {/* Contact Cards */}
               <Card>
-                <CardContent className="p-4">
+                <CardContent className="py-1 px-4">
                   <div className="flex items-start gap-4">
                     <div className="bg-primary/10 rounded-lg p-3">
                       <MapPin className="h-6 w-6 text-primary" />
                     </div>
                     <div className="flex-1">
-                      <h3 className="text-base lg:text-lg font-semibold text-foreground mb-2">
+                      <h3 className="text-base lg:text-lg font-semibold text-foreground mb-1">
                         Nuestra Ubicación
                       </h3>
-                      <p className="text-base lg:text-base text-muted-foreground leading-relaxed">
+                      <p className="text-base lg:text-base text-muted-foreground leading-relaxed mb-2">
                         Lic. Ramiro Hernández 430,
                         <br />
                         Minerales, Baja California, 44008
                         <br />
                         Las Pintitas, Jal.
                       </p>
+
+                      {/* Mapa embebido de Google Maps */}
+                      <div className="relative w-full h-48 rounded-lg overflow-hidden border border-border">
+                        <a
+                          href="https://www.google.com/maps/place/Aluminios+Desoxidantes+de+Occidente,+S.A.+De+C.V./@20.5453604,-103.2969613,4754m/data=!3m1!1e3!4m6!3m5!1s0x842f4a73730c7367:0x6780cc62e55a2e3!8m2!3d20.5490173!4d-103.3005769!16s%2Fg%2F1vknpq99?entry=ttu&g_ep=EgoyMDI1MDkyMi4wIKXMDSoASAFQAw%3D%3D"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="block w-full h-full relative"
+                        >
+                          <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3733.0567890123456!2d-103.3005769!3d20.5490173!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x842f4a73730c7367%3A0x6780cc62e55a2e3!2sAluminios%20Desoxidantes%20de%20Occidente%2C%20S.A.%20De%20C.V.!5e0!3m2!1ses!2smx!4v1234567890123&amp;output=embed&amp;z=15&amp;iwloc=&amp;disableDefaultUI=true&amp;gestureHandling=none&amp;zoomControl=true&amp;mapTypeControl=false&amp;scaleControl=false&amp;streetViewControl=false&amp;rotateControl=false&amp;fullscreenControl=false"
+                            width="100%"
+                            height="100%"
+                            style={{ border: 0 }}
+                            allowFullScreen={false}
+                            loading="lazy"
+                            referrerPolicy="no-referrer-when-downgrade"
+                            className="pointer-events-none"
+                            title="Ubicación de ALUDEOX"
+                          />
+                          {/* Overlay clickeable invisible */}
+                          <div className="absolute inset-0 bg-transparent hover:bg-black/10 transition-colors flex items-center justify-center">
+                            <div className="bg-white/90 backdrop-blur-sm rounded-lg px-3 py-1 opacity-0 hover:opacity-100 transition-opacity">
+                              <span className="text-sm text-gray-800 font-medium">
+                                Abrir en Google Maps
+                              </span>
+                            </div>
+                          </div>
+                        </a>
+                      </div>
                     </div>
                   </div>
                 </CardContent>
               </Card>
 
               <Card>
-                <CardContent className="p-4">
+                <CardContent className="py-1 px-4">
                   <div className="flex items-start gap-4">
                     <div className="bg-primary/10 rounded-lg p-3">
                       <Phone className="h-6 w-6 text-primary" />
                     </div>
                     <div className="flex-1">
-                      <div className="flex items-center gap-2 mb-2">
+                      <div className="flex items-center gap-2 mb-1">
                         <h3 className="text-base lg:text-lg font-semibold text-foreground">
                           Teléfono
                         </h3>
@@ -241,13 +266,13 @@ export default function ContactPage() {
               </Card>
 
               <Card>
-                <CardContent className="p-4">
+                <CardContent className="py-1 px-4">
                   <div className="flex items-start gap-4">
                     <div className="bg-primary/10 rounded-lg p-3">
                       <Mail className="h-6 w-6 text-primary" />
                     </div>
                     <div className="flex-1">
-                      <div className="flex items-center gap-2 mb-2">
+                      <div className="flex items-center gap-2 mb-1">
                         <h3 className="text-base lg:text-lg font-semibold text-foreground">
                           Correo Electrónico
                         </h3>
@@ -263,20 +288,20 @@ export default function ContactPage() {
               </Card>
 
               <Card>
-                <CardContent className="p-4">
+                <CardContent className="py-1 px-4">
                   <div className="flex items-start gap-4">
                     <div className="bg-primary/10 rounded-lg p-3">
                       <Clock className="h-6 w-6 text-primary" />
                     </div>
                     <div className="flex-1">
-                      <div className="flex items-center gap-2 mb-2">
+                      <div className="flex items-center gap-2 mb-1">
                         <h3 className="text-base lg:text-lg font-semibold text-foreground">
                           Horarios de Atención
                         </h3>
                       </div>
                       <div className="text-base lg:text-base text-muted-foreground leading-relaxed space-y-1">
                         <p>
-                          <strong>Lunes a Viernes:</strong> 8:00 AM - 6:00 PM
+                          <strong>Lunes a Viernes:</strong> 9:00 AM - 6:00 PM
                         </p>
                         <p>
                           <strong>Sábados:</strong> 9:00 AM - 2:00 PM
@@ -305,7 +330,7 @@ export default function ContactPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
             <Card className="text-center">
               <CardContent className="p-6">
                 <div className="bg-primary/10 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
@@ -332,21 +357,6 @@ export default function ContactPage() {
                 <p className="text-base lg:text-base text-muted-foreground leading-relaxed">
                   Envíanos tus especificaciones y recibe cotizaciones
                   personalizadas en menos de 24 horas.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="text-center">
-              <CardContent className="p-6">
-                <div className="bg-primary/10 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
-                  <MapPin className="h-8 w-8 text-primary" />
-                </div>
-                <h3 className="text-base lg:text-lg font-semibold text-foreground mb-2">
-                  Visitas Técnicas
-                </h3>
-                <p className="text-base lg:text-base text-muted-foreground leading-relaxed">
-                  Agenda una visita a nuestras instalaciones y conoce nuestros
-                  procesos de primera mano.
                 </p>
               </CardContent>
             </Card>

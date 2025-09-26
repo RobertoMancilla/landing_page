@@ -17,7 +17,7 @@ export function Hero() {
               {" "}
               {/* */}
               <Image
-                src="/secondary_logo.png"
+                src="/images/secondary_logo.png"
                 alt="main logo business"
                 fill
                 className="object-contain"
@@ -32,7 +32,7 @@ export function Hero() {
               <p className="text-base lg:text-lg text-muted-foreground leading-relaxed">
                 Transformamos aluminio y cobre en soluciones metálicas de alto
                 valor. Somos una empresa 100% mexicana, comprometida con la
-                calidad, la innovación y la confianza para cada uno de nuestros
+                <span className="text-primary font-medium"> calidad</span>, la <span className="text-primary font-medium">innovación</span> y la <span className="text-primary font-medium">confianza</span> para cada uno de nuestros
                 clientes.
               </p>
             </div>
@@ -40,9 +40,6 @@ export function Hero() {
             <div className="flex flex-col sm:flex-row gap-3">
               <Button size="lg" asChild>
                 <Link href="/contact">Solicita tu cotización</Link>
-              </Button>
-              <Button variant="outline" size="lg">
-                Descargar catálogo
               </Button>
             </div>
 

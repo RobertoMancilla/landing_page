@@ -37,7 +37,7 @@ export function ProductsPageContent() {
   // Datos para el modal del Lingote de Aluminio
   const aluminumAlloyData = {
     title: "Lingote de Aluminio",
-    imageSrc: "/images/photo.png",
+    imageSrc: "/images/products/lingote.jpg",
     specs: ["Peso: 8 - 10 kg", 'Dimensiones: 24" largo x 4" ancho'],
     composition: [
       { nombre: "Aluminio", formula: "Al", min: "95%", max: undefined },
@@ -53,7 +53,7 @@ export function ProductsPageContent() {
   // Datos para el modal del Cono Truncado de Aluminio
   const aluminumConeData = {
     title: "Cono Truncado de Aluminio",
-    imageSrc: "/images/photo.png",
+    imageSrc: "/images/products/cono_aluminio.png",
     specs: [
       "*La composición química de este producto se adapta de acuerdo con los requisitos establecidos por el cliente.",
       "Pureza: 99.7%",
@@ -75,7 +75,7 @@ export function ProductsPageContent() {
   // Datos para el modal de Briqueta de Aluminio
   const aluminumBriquetteData = {
     title: "Briqueta de Aluminio",
-    imageSrc: "/images/photo.png",
+    imageSrc: "/images/products/briqueta.png",
     specs: [
       "Peso: 200 - 300 g",
       "Presentación en supersacos de 2 toneladas",
@@ -97,7 +97,7 @@ export function ProductsPageContent() {
   // Datos para el modal de Posta de Aluminio
   const aluminumPasteData = {
     title: "Posta de Aluminio",
-    imageSrc: "/images/photo.png",
+    imageSrc: "/images/products/posta.png",
     specs: [
       "Forma: Bote molido",
       "Granulometría: 80% mínimo entre 2 mm y 4 mm",
@@ -121,7 +121,7 @@ export function ProductsPageContent() {
   // Datos para el modal de Cono de Cobre Refinado
   const copperConeData = {
     title: "Cono de Cobre Refinado",
-    imageSrc: "/images/photo.png",
+    imageSrc: "/images/products/conos_cobre.png",
     specs: [
       "*La composición química de este producto se adapta de acuerdo con los requisitos establecidos por el cliente.",
       "Peso: 800 - 1200 g",
@@ -144,10 +144,8 @@ export function ProductsPageContent() {
   // Datos para el modal de Cobre Electrolítico
   const electrolyticalCopperData = {
     title: "Cobre Electrolítico",
-    imageSrc: "/images/photo.png",
-    specs: [
-      "Null..."
-    ],
+    imageSrc: "/images/products/cobre_jojo.png",
+    specs: ["Null..."],
     composition: [
       { nombre: "Cobre", formula: "Cu", min: "99.99%", max: undefined },
       { nombre: "Níquel", formula: "Ni", min: undefined, max: undefined },
@@ -197,7 +195,7 @@ export function ProductsPageContent() {
         "Color: Gris metálico",
         "Punto de fusión: 660 °C",
       ],
-      image: "/images/photo.png",
+      image: "/images/products/cono_aluminio.png",
     },
     {
       id: 2,
@@ -212,7 +210,7 @@ export function ProductsPageContent() {
         "Punto de fusión: 660 °C",
         "Densidad relativa (agua=1) : 2.3 - 2.5",
       ],
-      image: "/images/photo.png",
+      image: "/images/products/briqueta.png",
     },
     {
       id: 3,
@@ -221,7 +219,7 @@ export function ProductsPageContent() {
       description:
         "Lingotes, fabricados con un mínimo de 95% de aluminio. Utilizados principalmente como desoxidante en procesos siderúrgicos, garantizan estabilidad y eficiencia en la fundición",
       specifications: ["Peso: 8 - 10 kg", 'Dimensiones: 24" largo x 4" ancho'],
-      image: "/images/photo.png",
+      image: "/images/products/lingote_product.png",
     },
     {
       id: 4,
@@ -236,7 +234,7 @@ export function ProductsPageContent() {
         "Punto de fusión: 660 °C",
         "Presentación: Supersacos de 1.0 toneladas métricas",
       ],
-      image: "/images/photo.png",
+      image: "/images/products/posta.png",
     },
     {
       id: 5,
@@ -249,7 +247,7 @@ export function ProductsPageContent() {
         "Dimensiones: Altura 70 - 80 mm / Base 64 - 70 mm",
         "Punto de fusión: 1083 °C",
       ],
-      image: "/images/photo.png",
+      image: "/images/products/conos_cobre.png",
     },
     {
       id: 6,
@@ -257,7 +255,7 @@ export function ProductsPageContent() {
       title: "Cobre Electrolítico",
       description: "Null....",
       specifications: ["Null..."],
-      image: "/images/photo.png",
+      image: "/images/products/cobre_jojo.png",
     },
   ];
 
@@ -345,8 +343,13 @@ export function ProductsPageContent() {
             </h2>
             <p className="text-base lg:text-lg text-muted-foreground leading-relaxed mb-8">
               Todos nuestros productos cumplen con estándares internacionales de
-              calidad y están respaldados por certificaciones ISO 9001:2015, NOM-043-SEMARNAT-1993,
-              NOM-085-SEMARNAT-2011. Nuestro laboratorio interno garantiza la consistencia en cada 
+              calidad y están respaldados por certificaciones{" "}
+              <span className="text-primary font-medium">
+                ISO 9001:2015<span className="text-black">,</span>{" "}
+                NOM-043-SEMARNAT-1993<span className="text-black">,{" "}</span>
+                NOM-085-SEMARNAT-2011
+              </span>
+              . Nuestro laboratorio interno garantiza la consistencia en cada
               lote producido.
             </p>
 

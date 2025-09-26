@@ -16,6 +16,7 @@ import {
   Cog,
   Users,
   FileText,
+  Shield,
 } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -128,25 +129,50 @@ export default function AboutUsPage() {
             <div className="col-span-12 md:col-span-6">
               <div className="space-y-3">
                 <p className="text-base lg:text-lg text-muted-foreground leading-relaxed text-justify">
-                  En ALUDEOX nos dedicamos a la fundición y transformación de
-                  aluminio y cobre, elaborando aleaciones que impulsan el
-                  crecimiento de la industria. Ofrecemos soluciones para los
-                  sectores automotriz y siderúrgico, así como insumos de alta
-                  pureza para las industrias eléctrica y electrónica. Adaptamos
-                  la materia prima a las necesidades específicas de cada
-                  cliente.
+                  En <span className="text-primary font-medium">ALUDEOX</span>{" "}
+                  nos dedicamos a la fundición y transformación de aluminio y
+                  cobre, elaborando{" "}
+                  <span className="text-primary font-medium">aleaciones</span>{" "}
+                  que impulsan el crecimiento de la industria. Ofrecemos
+                  soluciones para los
+                  <span className="text-primary font-medium">
+                    {" "}
+                    sectores automotriz y siderúrgico
+                  </span>
+                  , así como insumos de alta pureza para las{" "}
+                  <span className="text-primary font-medium">
+                    industrias eléctrica y electrónica
+                  </span>
+                  . Adaptamos la materia prima a las necesidades específicas de
+                  cada cliente.
                 </p>
                 <p className="text-base lg:text-lg text-muted-foreground leading-relaxed text-justify">
-                  Trabajamos con aleaciones madre (master alloys), lingotes,
-                  conos, briquetas y cobre electrolítico, lo que nos convierte
-                  en un aliado confiable para empresas que requieren calidad,
-                  consistencia y eficiencia en sus procesos metalúrgicos.
+                  Trabajamos con{" "}
+                  <span className="text-primary font-medium">
+                    aleaciones madre
+                  </span>{" "}
+                  ,{" "}
+                  <span className="text-primary font-medium">
+                    lingotes, conos, briquetas
+                  </span>{" "}
+                  y{" "}
+                  <span className="text-primary font-medium">
+                    cobre electrolítico
+                  </span>
+                  , lo que nos convierte en un aliado confiable para empresas
+                  que requieren calidad, consistencia y eficiencia en sus
+                  procesos metalúrgicos.
                 </p>
                 <p className="text-base lg:text-lg text-muted-foreground leading-relaxed text-justify">
-                  Nuestra pasión está en dar valor al metal reciclado,
-                  transformándolo en nuevos productos que cumplen con estándares
-                  internacionales y fortalecen la cadena productiva de múltiples
-                  sectores.
+                  Nuestra pasión está en dar valor al{" "}
+                  <span className="text-primary font-medium">
+                    metal reciclado
+                  </span>
+                  , transformándolo en nuevos productos que cumplen con{" "}
+                  <span className="text-primary font-medium">
+                    estándares internacionales
+                  </span>{" "}
+                  y fortalecen la cadena productiva de múltiples sectores.
                 </p>
               </div>
             </div>
@@ -306,7 +332,7 @@ export default function AboutUsPage() {
                   <h3 className="text-base lg:text-lg font-semibold text-foreground mb-2">
                     {value.title}
                   </h3>
-                  <p className="text-base lg:text-lg text-muted-foreground leading-relaxed">
+                  <p className="text-base lg:text-base text-muted-foreground leading-relaxed">
                     {value.description}
                   </p>
                 </CardContent>
@@ -315,111 +341,95 @@ export default function AboutUsPage() {
           </div>
         </Section>
 
-        {/* Mission and Vision */}
+        {/* Mission, Vision and Quality Policy */}
         <Section
-          id="mision-vision"
+          id="mision-vision-calidad"
           className="bg-background"
-          maxW="5xl"
+          maxW="7xl"
           py="sm"
         >
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <Card>
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            {/* Visión */}
+            <Card
+              className="group relative overflow-hidden border-0 shadow-lg hover:shadow-xl transition-all duration-300"
+              style={{ backgroundColor: "var(--brand-gray-200)" }}
+            >
               <CardContent className="p-4">
-                <div className="flex items-center justify-center gap-2 mb-2">
-                  <Target className="h-6 w-6 text-primary" />
-                  <h2 className="text-xl lg:text-2xl font-bold text-foreground">
-                    Misión
-                  </h2>
+                {/* Header con ícono */}
+                <div className="relative mb-4">
+                  <div className="flex flex-col items-center text-center">
+                    <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-white shadow-md mb-3 group-hover:scale-110 group-hover:shadow-lg transition-all duration-300">
+                      <Eye className="h-8 w-8 text-primary" />
+                    </div>
+                    <h2 className="text-xl lg:text-2xl font-bold text-white">
+                      Visión
+                    </h2>
+                  </div>
                 </div>
-                <p className="text-base lg:text-lg text-muted-foreground leading-relaxed text-center">
-                  Fabricar y comercializar aleaciones metálicas con materiales
-                  primarios y reciclados para las industrias siderúrgicas, del
-                  aluminio, del cobre y en general, adaptando tecnologías para
-                  mejorar procesos, optimizar costos y brindar un soporte
-                  técnico cercano y confiable.
+                <p className="text-base text-white/90 leading-relaxed text-center">
+                  Enfocarnos en los mercados que signifiquen un reto tecnológico
+                  en procesos innovadores para las industrias de transformación,
+                  metal-mecánica y en general, implementando nuevas tecnologías.
                 </p>
               </CardContent>
             </Card>
 
-            <Card>
+            {/* Misión */}
+            <Card
+              className="group relative overflow-hidden border-0 shadow-lg hover:shadow-xl transition-all duration-300"
+              style={{ backgroundColor: "var(--brand-gray-200)" }}
+            >
               <CardContent className="p-4">
-                <div className="flex items-center justify-center gap-2 mb-2">
-                  <Eye className="h-6 w-6 text-primary" />
-                  <h2 className="text-xl lg:text-2xl font-bold text-foreground">
-                    Visión
-                  </h2>
+                {/* Header con ícono */}
+                <div className="relative mb-4">
+                  <div className="flex flex-col items-center text-center">
+                    <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-white shadow-md mb-3 group-hover:scale-110 group-hover:shadow-lg transition-all duration-300">
+                      <Target className="h-8 w-8 text-primary" />
+                    </div>
+                    <h2 className="text-xl lg:text-2xl font-bold text-white">
+                      Misión
+                    </h2>
+                  </div>
                 </div>
-                <p className="text-base lg:text-lg text-muted-foreground leading-relaxed text-center">
-                  Consolidarnos como referentes en los mercados que representan
-                  un reto tecnológico, ofreciendo procesos innovadores y
-                  soluciones de calidad para la industria de la transformación,
-                  el sector metal-mecánico y otras ramas productivas,
-                  implementando constantemente nuevas tecnologías.
+                <p className="text-base text-white/90 leading-relaxed text-center">
+                  Fabricar aleaciones metálicas con materiales primarios y
+                  metales reciclados para las industrias siderúrgicas, del
+                  aluminio, y en general. Adaptando tecnologías existentes a
+                  nuestras necesidades e implementando sistemas para hacerlas
+                  más eficientes, además de proporcionar a nuestros clientes
+                  asistencia técnica para optimizar sus costos.
+                </p>
+              </CardContent>
+            </Card>
+
+            {/* Política de Calidad */}
+            <Card
+              className="group relative overflow-hidden border-0 shadow-lg hover:shadow-xl transition-all duration-300"
+              style={{ backgroundColor: "var(--brand-gray-200)" }}
+            >
+              <CardContent className="p-4">
+                {/* Header con ícono */}
+                <div className="relative mb-4">
+                  <div className="flex flex-col items-center text-center">
+                    <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-white shadow-md mb-3 group-hover:scale-110 group-hover:shadow-lg transition-all duration-300">
+                      <Shield className="h-8 w-8 text-primary" />
+                    </div>
+                    <h2 className="text-xl lg:text-2xl font-bold text-white">
+                      Política de Calidad
+                    </h2>
+                  </div>
+                </div>
+                <p className="text-base text-white/90 leading-relaxed text-center">
+                  ALUDEOX está comprometido con el cumplimiento de requisitos
+                  legales y regulatorios aplicables, así como los requerimientos
+                  de nuestros clientes tanto actuales como potenciales,
+                  produciendo y comercializando aleaciones metálicas con
+                  materiales primarios y materiales reciclados.
                 </p>
               </CardContent>
             </Card>
           </div>
         </Section>
-
-        {/* Technical Team
-        <Section id="equipo-tecnico" ariaLabelledby="team-title" py="sm">
-          <h2
-            id="team-title"
-            className="text-3xl lg:text-4xl font-bold text-center text-foreground mb-6"
-          >
-            Nuestro Equipo Técnico
-          </h2>
-          <p className="text-center text-muted-foreground text-base lg:text-lg leading-relaxed mb-12 max-w-3xl mx-auto">
-            Contamos con un equipo multidisciplinario de ingenieros
-            metalúrgicos, químicos y especialistas en procesos industriales con
-            décadas de experiencia combinada.
-          </p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
-            {Ingenieros especializados }
-            <div className="text-center">
-              <div className="flex justify-center mb-4">
-                <GraduationCap className="h-12 w-12 text-primary" />
-              </div>
-              <div className="text-3xl font-bold text-primary mb-2">25+</div>
-              <p className="text-base lg:text-lg text-foreground font-medium">
-                Ingenieros especializados
-              </p>
-            </div>
-
-            {Años de experiencia }
-            <div className="text-center">
-              <div className="flex justify-center mb-4">
-                <Clock className="h-12 w-12 text-primary" />
-              </div>
-              <div className="text-3xl font-bold text-primary mb-2">150+</div>
-              <p className="text-base lg:text-lg text-foreground font-medium">
-                Años de experiencia combinada
-              </p>
-            </div>
-
-            {Proyectos completados }
-            <div className="text-center">
-              <div className="flex justify-center mb-4">
-                <CheckCircle className="h-12 w-12 text-primary" />
-              </div>
-              <div className="text-3xl font-bold text-primary mb-2">500+</div>
-              <p className="text-base lg:text-lg text-foreground font-medium">
-                Proyectos completados
-              </p>
-            </div>
-
-            {Índice de calidad }
-            <div className="text-center">
-              <div className="flex justify-center mb-4">
-                <TrendingUp className="h-12 w-12 text-primary" />
-              </div>
-              <div className="text-3xl font-bold text-primary mb-2">99.9%</div>
-              <p className="text-base lg:text-lg text-foreground font-medium">
-                Índice de calidad
-              </p>
-            </div>
-          </div>
-        </Section> */}
 
         {/* Certifications */}
         <Section id="certificaciones" ariaLabelledby="cert-title" py="sm">

@@ -43,8 +43,8 @@ export function Specialties() {
           Nuestras especialidades
         </h2>
         <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-          En ALUDEOX nos especializamos en la fundición y transformación de
-          aluminio y cobre, ofreciendo aleaciones y materiales de alta pureza
+          En <span className="text-primary font-medium">ALUDEOX</span> nos especializamos en la fundición y transformación de
+          <span className="text-primary font-medium"> aluminio</span> y <span className="text-primary font-medium">cobre</span>, ofreciendo aleaciones y materiales de alta pureza
           para sectores como automotriz, siderúrgico y eléctrico. Convertimos el
           metal reciclado en soluciones confiables y eficientes que impulsan la
           industria
@@ -60,7 +60,15 @@ export function Specialties() {
                 <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center">
                   <Icon className="h-8 w-8 text-primary" />
                 </div>
-                <CardTitle className="text-xl">{specialty.title}</CardTitle>
+                                <CardTitle className="text-xl">
+                  {specialty.title === "Aleaciones de Aluminio" ? (
+                    <>Aleaciones de Aluminio</>
+                  ) : specialty.title === "Aleaciones de Cobre" ? (
+                    <>Aleaciones de Cobre </>
+                  ) : (
+                    specialty.title
+                  )}
+                </CardTitle>
               </CardHeader>
               <CardContent>
                 <CardDescription className="text-center leading-relaxed">
