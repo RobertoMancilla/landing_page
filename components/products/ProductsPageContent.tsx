@@ -344,9 +344,12 @@ export function ProductsPageContent() {
             <p className="text-base lg:text-lg text-muted-foreground leading-relaxed mb-8">
               Todos nuestros productos cumplen con estándares internacionales de
               calidad y están respaldados por certificaciones{" "}
+              <span className="text-primary font-medium">ISO 9001:2015</span>,{" "}
               <span className="text-primary font-medium">
-                ISO 9001:2015<span className="text-black">,</span>{" "}
-                NOM-043-SEMARNAT-1993<span className="text-black">,{" "}</span>
+                NOM-043-SEMARNAT-1993
+              </span>
+              ,{" "}
+              <span className="text-primary font-medium">
                 NOM-085-SEMARNAT-2011
               </span>
               . Nuestro laboratorio interno garantiza la consistencia en cada
