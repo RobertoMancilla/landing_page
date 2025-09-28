@@ -17,7 +17,7 @@ interface SectionProps {
   /** Ancho máximo del contenedor (default: screen-2xl) */
   maxW?: "2xl" | "5xl" | "7xl" | "screen-2xl";
   /** Padding vertical (default: lg) */
-  py?: "sm" | "md" | "lg";
+  py?: "xs" | "sm" | "md" | "lg";
   /** Si es true, omite el contenedor centrado para ancho completo */
   bleed?: boolean;
 }
@@ -44,6 +44,7 @@ export function Section({
 
   // Mapeo de py a clases Tailwind
   const paddingClasses = {
+    xs: "py-4 lg:py-1",
     sm: "py-10 lg:py-14",
     md: "py-16 lg:py-20",
     lg: "py-16 lg:py-24",

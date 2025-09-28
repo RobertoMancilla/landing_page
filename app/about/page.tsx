@@ -227,7 +227,16 @@ export default function AboutUsPage() {
                     <div
                       className={`w-5/12 ${index % 2 === 0 ? "pr-8" : "pl-8"}`}
                     >
-                      <div className="bg-white rounded-lg p-4 border border-border shadow-sm hover:shadow-md transition-shadow group">
+                      <div
+                        className={`rounded-lg p-4 border border-border shadow-sm hover:shadow-md transition-shadow group ${
+                          index % 2 === 1 ? "bg-white" : "text-white/90"
+                        }`}
+                        style={
+                          index % 2 === 1
+                            ? {}
+                            : { backgroundColor: "var(--brand-gray-200)" }
+                        }
+                      >
                         {/* Content */}
                         <div
                           className={`${
@@ -238,11 +247,23 @@ export default function AboutUsPage() {
                             <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-primary text-white text-xs font-bold">
                               {item.number}
                             </span>
-                            <h3 className="text-base lg:text-lg font-bold text-foreground group-hover:text-primary transition-colors">
+                            <h3
+                              className={`text-base lg:text-lg font-bold transition-colors ${
+                                index % 2 === 1
+                                  ? "text-foreground group-hover:text-primary"
+                                  : "text-white group-hover:text-white/80"
+                              }`}
+                            >
                               {item.title}
                             </h3>
                           </div>
-                          <p className="text-base lg:text-lg text-muted-foreground leading-relaxed">
+                          <p
+                            className={`text-base lg:text-lg leading-relaxed ${
+                              index % 2 === 1
+                                ? "text-muted-foreground"
+                                : "text-white/90"
+                            }`}
+                          >
                             {item.description}
                           </p>
                         </div>
@@ -267,16 +288,35 @@ export default function AboutUsPage() {
                   </div>
 
                   <div className="flex-1">
-                    <div className="bg-white rounded-lg p-4 border border-border shadow-sm">
+                    <div
+                      className={`rounded-lg p-4 border border-border shadow-sm ${
+                        index % 2 === 1 ? "bg-white" : ""
+                      }`}
+                      style={
+                        index % 2 === 1
+                          ? {}
+                          : { backgroundColor: "var(--brand-gray-200)" }
+                      }
+                    >
                       <div className="flex items-center gap-2 mb-2">
                         <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-primary text-white text-xs font-bold">
                           {item.number}
                         </span>
-                        <h3 className="text-base lg:text-lg font-bold text-foreground">
+                        <h3
+                          className={`text-base lg:text-lg font-bold ${
+                            index % 2 === 1 ? "text-foreground" : "text-white"
+                          }`}
+                        >
                           {item.title}
                         </h3>
                       </div>
-                      <p className="text-base lg:text-lg text-muted-foreground leading-relaxed">
+                      <p
+                        className={`text-base lg:text-lg leading-relaxed ${
+                          index % 2 === 1
+                            ? "text-muted-foreground"
+                            : "text-white/90"
+                        }`}
+                      >
                         {item.description}
                       </p>
                     </div>
@@ -299,14 +339,33 @@ export default function AboutUsPage() {
                 </div>
 
                 <div className="flex-1">
-                  <div className="bg-white rounded-lg p-3 border border-border shadow-sm">
+                  <div
+                    className={`rounded-lg p-3 border border-border shadow-sm ${
+                      index % 2 === 1 ? "bg-white" : ""
+                    }`}
+                    style={
+                      index % 2 === 1
+                        ? {}
+                        : { backgroundColor: "var(--brand-gray-200)" }
+                    }
+                  >
                     <div className="flex items-center gap-2 mb-2">
                       <item.icon className="h-4 w-4 text-primary" />
-                      <h3 className="font-bold text-foreground text-base leading-tight">
+                      <h3
+                        className={`font-bold text-base leading-tight ${
+                          index % 2 === 1 ? "text-foreground" : "text-white"
+                        }`}
+                      >
                         {item.title}
                       </h3>
                     </div>
-                    <p className="text-base text-muted-foreground leading-relaxed">
+                    <p
+                      className={`text-base leading-relaxed ${
+                        index % 2 === 1
+                          ? "text-muted-foreground"
+                          : "text-white/90"
+                      }`}
+                    >
                       {item.description}
                     </p>
                   </div>
