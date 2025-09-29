@@ -20,7 +20,7 @@ export function Hero() {
             aria-label="Logo animado de la empresa"
           >
             <source src="/videos/animated_logo.webm" type="video/webm" />
-            <source src="/videos/animated_logo.mp4" type="video/mp4" />
+            <source src="/videos/animated_logo_fixed.mp4" type="video/mp4" />
             {/* Fallback final para browsers que no soportan video */}
             <Image
               src="/images/logos/secondary_logo.png"
