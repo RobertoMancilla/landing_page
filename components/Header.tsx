@@ -45,7 +45,7 @@ export function SiteHeader() {
             <Link href="/" className="inline-block" aria-label="Inicio">
               <div className="relative h-8 w-32 md:h-10 md:w-40">
                 <Image
-                  src="/images/secondary_logo.png"
+                  src="/images/logos/secondary_logo.png"
                   alt="ALUDEOX — Aleaciones Metálicas"
                   fill
                   className="object-contain"

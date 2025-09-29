@@ -13,7 +13,7 @@ export function SiteFooter() {
             <div className="space-y-6">
               <div className="relative w-32 h-12">
                 <Image
-                  src="/images/secondary_logo.png"
+                  src="/images/logos/secondary_logo.png"
                   alt="Logo Aleaciones Metálicas"
                   fill
                   className="object-contain brightness-0 invert"
