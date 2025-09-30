@@ -23,6 +23,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="es-MX" className="antialiased">
+      <head>
+        <link
+          rel="preload"
+          href="/videos/animated_logo.mp4"
+          as="video"
+          type="video/mp4"
+        />
+      </head>
       <body suppressHydrationWarning={true}>
         {children}
         <SpeedInsights />

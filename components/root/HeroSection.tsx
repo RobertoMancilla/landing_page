@@ -16,11 +16,14 @@ export function Hero() {
             muted
             playsInline
             preload="auto"
+            poster="/images/logos/logo_poster.jpg"
             className="w-full h-full object-cover"
             aria-label="Logo animado de la empresa"
           >
+            {/* MP4 como fuente principal para mejor compatibilidad con Safari */}
+            <source src="/videos/animated_logo.mp4" type="video/mp4" />
+            {/* WebM como fallback para browsers que lo soporten mejor */}
             <source src="/videos/animated_logo.webm" type="video/webm" />
-            {/* <source src="/videos/animated_logo.mp4" type="video/mp4" /> */}
             {/* Fallback final para browsers que no soportan video */}
             <Image
               src="/images/logos/secondary_logo.png"
