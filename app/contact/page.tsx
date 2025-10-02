@@ -1,4 +1,6 @@
-import type { Metadata } from "next";
+"use client";
+
+import { useState } from "react";
 import { SiteHeader } from "@/components/Header";
 import { SiteFooter } from "@/components/FooterSection";
 import { Card, CardContent } from "@/components/ui/card";
@@ -23,15 +25,50 @@ import {
   User,
   Building,
   MessageSquare,
+  CheckCircle,
+  Loader2,
 } from "lucide-react";
 
-export const metadata: Metadata = {
-  title: "Contacto - ALUDEOX",
-  description:
-    "Contáctanos para cotizaciones personalizadas, asesoría técnica y soluciones en aleaciones de aluminio y cobre. Nuestro equipo está listo para ayudarte.",
-};
-
 export default function ContactPage() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [formError, setFormError] = useState("");
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setFormError("");
+
+    const formData = new FormData(e.currentTarget);
+
+    // Agregar campos necesarios para Web3Forms
+    formData.append("access_key", "7d534976-e247-428d-8f4d-80502e9225d7");
+    formData.append("subject", "Nueva consulta desde ALUDEOX Landing Page");
+    formData.append("from_name", "ALUDEOX Landing Page");
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData,
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        setIsSubmitted(true);
+      } else {
+        throw new Error("Error al enviar el formulario");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      setFormError(
+        "Hubo un error al enviar tu mensaje. Por favor intenta nuevamente."
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <div className="min-h-screen flex flex-col">
       <SiteHeader />
@@ -63,130 +100,215 @@ export default function ContactPage() {
             {/* Contact Form */}
             <Card className="order-1 lg:order-1">
               <CardContent className="p-6">
-                <h2 className="text-xl lg:text-2xl font-bold text-foreground mb-4">
-                  Solicita tu Cotización
-                </h2>
-                <form className="space-y-6">
-                  {/* Name */}
-                  <div className="space-y-2">
-                    <Label htmlFor="name" className="text-base font-medium">
-                      Nombre Completo *
-                    </Label>
-                    <div className="relative">
-                      <User className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                      <Input
-                        type="text"
-                        id="name"
-                        name="name"
-                        required
-                        className="pl-10 h-12"
-                        placeholder="Tu nombre completo"
+                {!isSubmitted ? (
+                  <>
+                    <h2 className="text-xl lg:text-2xl font-bold text-foreground mb-4">
+                      Solicita tu Cotización
+                    </h2>
+                    <form onSubmit={handleSubmit} className="space-y-6">
+                      {/* Honeypot Spam Protection */}
+                      <input
+                        type="checkbox"
+                        name="botcheck"
+                        className="hidden"
+                        style={{ display: "none" }}
+                        tabIndex={-1}
+                        autoComplete="off"
                       />
+
+                      {/* Name */}
+                      <div className="space-y-2">
+                        <Label htmlFor="name" className="text-base font-medium">
+                          Nombre Completo *
+                        </Label>
+                        <div className="relative">
+                          <User className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                          <Input
+                            type="text"
+                            id="name"
+                            name="name"
+                            required
+                            disabled={isSubmitting}
+                            className="pl-10 h-12"
+                            placeholder="Tu nombre completo"
+                          />
+                        </div>
+                      </div>
+
+                      {/* Email */}
+                      <div className="space-y-2">
+                        <Label
+                          htmlFor="email"
+                          className="text-base font-medium"
+                        >
+                          Correo Electrónico *
+                        </Label>
+                        <div className="relative">
+                          <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                          <Input
+                            type="email"
+                            id="email"
+                            name="email"
+                            required
+                            disabled={isSubmitting}
+                            className="pl-10 h-12"
+                            placeholder="tu@empresa.com"
+                          />
+                        </div>
+                      </div>
+
+                      {/* Company */}
+                      <div className="space-y-2">
+                        <Label
+                          htmlFor="company"
+                          className="text-base font-medium"
+                        >
+                          Empresa
+                        </Label>
+                        <div className="relative">
+                          <Building className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                          <Input
+                            type="text"
+                            id="company"
+                            name="company"
+                            disabled={isSubmitting}
+                            className="pl-10 h-12"
+                            placeholder="Nombre de tu empresa"
+                          />
+                        </div>
+                      </div>
+
+                      {/* Phone */}
+                      <div className="space-y-2">
+                        <Label
+                          htmlFor="phone"
+                          className="text-base font-medium"
+                        >
+                          Teléfono
+                        </Label>
+                        <div className="relative">
+                          <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                          <Input
+                            type="tel"
+                            id="phone"
+                            name="phone"
+                            disabled={isSubmitting}
+                            className="pl-10 h-12"
+                            placeholder="+52 (123) 456-7890"
+                          />
+                        </div>
+                      </div>
+
+                      {/* Subject Select */}
+                      <div className="space-y-2">
+                        <Label
+                          htmlFor="inquiry_type"
+                          className="text-base font-medium"
+                        >
+                          Tipo de Consulta *
+                        </Label>
+                        <select
+                          name="inquiry_type"
+                          id="inquiry_type"
+                          required
+                          disabled={isSubmitting}
+                          className="flex h-12 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                        >
+                          <option value="">Selecciona una opción</option>
+                          <option value="Cotización de Productos">
+                            Cotización de Productos
+                          </option>
+                          <option value="Asesoría Técnica">
+                            Asesoría Técnica
+                          </option>
+                        </select>
+                      </div>
+
+                      {/* Message */}
+                      <div className="space-y-2">
+                        <Label
+                          htmlFor="message"
+                          className="text-base font-medium"
+                        >
+                          Mensaje *
+                        </Label>
+                        <div className="relative">
+                          <MessageSquare className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
+                          <textarea
+                            id="message"
+                            name="message"
+                            required
+                            rows={6}
+                            disabled={isSubmitting}
+                            className="flex min-h-[120px] w-full rounded-md border border-input bg-background px-3 py-2 pl-10 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 resize-none"
+                            placeholder="Cuéntanos sobre tu proyecto, las especificaciones técnicas que necesitas, volúmenes requeridos y cualquier otro detalle relevante..."
+                          />
+                        </div>
+                      </div>
+
+                      {/* Error Message */}
+                      {formError && (
+                        <div className="text-sm text-red-600 bg-red-50 border border-red-200 rounded-md p-3">
+                          {formError}
+                        </div>
+                      )}
+
+                      {/* Submit Button */}
+                      <Button
+                        type="submit"
+                        className="w-full"
+                        size="lg"
+                        disabled={isSubmitting}
+                      >
+                        {isSubmitting ? (
+                          <>
+                            <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+                            Enviando...
+                          </>
+                        ) : (
+                          <>
+                            <Send className="h-4 w-4 mr-2" />
+                            Enviar Consulta
+                          </>
+                        )}
+                      </Button>
+
+                      <div className="flex items-center justify-center gap-2">
+                        <span className="text-xs text-muted-foreground">
+                          * Campos obligatorios
+                        </span>
+                      </div>
+                    </form>
+                  </>
+                ) : (
+                  /* Success Message */
+                  <div className="text-center py-8">
+                    <div className="bg-primary/5 border border-primary/20 rounded-lg p-6 mb-6">
+                      <CheckCircle className="h-12 w-12 text-primary mx-auto mb-4" />
+                      <h2 className="text-xl lg:text-2xl font-bold text-primary mb-3">
+                        ¡Mensaje Enviado Exitosamente!
+                      </h2>
+                      <p className="text-base text-primary/80 mb-4">
+                        Gracias por contactarnos. Hemos recibido tu consulta,
+                        nuestro equipo técnico se pondrá en contacto contigo
+                      </p>
+                      <p className="text-sm text-primary/70">
+                        Puedes llamarnos al{" "}
+                        <strong className="text-primary">
+                          +52 (33) 3695-1086
+                        </strong>
+                      </p>
                     </div>
-                  </div>
 
-                  {/* Email */}
-                  <div className="space-y-2">
-                    <Label htmlFor="email" className="text-base font-medium">
-                      Correo Electrónico *
-                    </Label>
-                    <div className="relative">
-                      <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                      <Input
-                        type="email"
-                        id="email"
-                        name="email"
-                        required
-                        className="pl-10 h-12"
-                        placeholder="tu@empresa.com"
-                      />
-                    </div>
+                    <Button
+                      onClick={() => setIsSubmitted(false)}
+                      variant="outline"
+                      className="mt-4 border-primary/30 text-primary hover:bg-primary/10 hover:border-primary/50"
+                    >
+                      Enviar Otra Consulta
+                    </Button>
                   </div>
-
-                  {/* Company */}
-                  <div className="space-y-2">
-                    <Label htmlFor="company" className="text-base font-medium">
-                      Empresa
-                    </Label>
-                    <div className="relative">
-                      <Building className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                      <Input
-                        type="text"
-                        id="company"
-                        name="company"
-                        className="pl-10 h-12"
-                        placeholder="Nombre de tu empresa"
-                      />
-                    </div>
-                  </div>
-
-                  {/* Phone */}
-                  <div className="space-y-2">
-                    <Label htmlFor="phone" className="text-base font-medium">
-                      Teléfono
-                    </Label>
-                    <div className="relative">
-                      <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                      <Input
-                        type="tel"
-                        id="phone"
-                        name="phone"
-                        className="pl-10 h-12"
-                        placeholder="+52 (123) 456-7890"
-                      />
-                    </div>
-                  </div>
-
-                  {/* Subject */}
-                  <div className="space-y-2">
-                    <Label htmlFor="subject" className="text-base font-medium">
-                      Tipo de Consulta *
-                    </Label>
-                    <Select name="subject" required>
-                      <SelectTrigger className="h-12">
-                        <SelectValue placeholder="Selecciona una opción" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="cotizacion">
-                          Cotización de Productos
-                        </SelectItem>
-                        <SelectItem value="asesoria">
-                          Asesoría Técnica
-                        </SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
-
-                  {/* Message */}
-                  <div className="space-y-2">
-                    <Label htmlFor="message" className="text-base font-medium">
-                      Mensaje *
-                    </Label>
-                    <div className="relative">
-                      <MessageSquare className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
-                      <Textarea
-                        id="message"
-                        name="message"
-                        required
-                        rows={6}
-                        className="pl-10 resize-none min-h-[120px]"
-                        placeholder="Cuéntanos sobre tu proyecto, las especificaciones técnicas que necesitas, volúmenes requeridos y cualquier otro detalle relevante..."
-                      />
-                    </div>
-                  </div>
-
-                  {/* Submit Button */}
-                  <Button type="submit" className="w-full" size="lg">
-                    <Send className="h-4 w-4 mr-2" />
-                    Enviar Consulta
-                  </Button>
-
-                  <div className="flex items-center justify-center gap-2">
-                    <span className="text-xs text-muted-foreground">
-                      * Campos obligatorios
-                    </span>
-                  </div>
-                </form>
+                )}
               </CardContent>
             </Card>
 
