@@ -145,7 +145,12 @@ export function ProductsPageContent() {
   const electrolyticalCopperData = {
     title: "Cobre Electrolítico",
     imageSrc: "/images/products/cobre_jojo.png",
-    specs: ["Null..."],
+    specs: [
+      "Peso molecular: 63.55 g/mol",
+      "Densidad relativa: 8.90 - 8.95 g/cm³",
+      "Punto de fusión: 1083 °C",
+      "Presentación: Cátodos",
+    ],
     composition: [
       { nombre: "Cobre", formula: "Cu", min: "99.99%", max: undefined },
       { nombre: "Níquel", formula: "Ni", min: undefined, max: undefined },
@@ -253,8 +258,14 @@ export function ProductsPageContent() {
       id: 6,
       icon: AlignVerticalDistributeCenter,
       title: "Cobre Electrolítico",
-      description: "Null....",
-      specifications: ["Null..."],
+      description:
+        "Aplicaciones eléctricas y electrónicas por su alta conductividad eléctrica y térmica, además de su pureza superior. Es la materia prima esencial en la fabricación de cables, barras, láminas y componentes para la industria eléctrica y de telecomunicaciones.",
+      specifications: [
+        "Peso molecular: 63.55 g/mol",
+        "Densidad relativa: 8.90 - 8.95 g/cm³",
+        "Punto de fusión: 1083 °C",
+        "Presentación: Cátodos",
+      ],
       image: "/images/products/cobre_jojo.png",
     },
   ];
