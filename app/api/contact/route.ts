@@ -4,32 +4,50 @@ import { NextResponse } from "next/server";
 export const runtime = "nodejs";            // Vercel: Node.js runtime
 export const dynamic = "force-dynamic";     // evitar cache estática de rutas
 
-function isValid(body: any) {
-  const { name, email, message, subject } = body || {};
-  const emailOk = typeof email === "string" && /\S+@\S+\.\S+/.test(email);
-  return (
-    typeof name === "string" && name.trim().length >= 2 &&
-    emailOk &&
-    typeof message === "string" && message.trim().length >= 10 &&
-    typeof subject === "string" && subject.trim().length >= 3
-  );
+// ------- Tipos -------
+type ContactBody = {
+  name: string;
+  email: string;
+  message: string;
+  subject: string;
+  company?: string;
+  phone?: string;
+  botcheck?: string;
+};
+
+type Web3FormsResponse = {
+  success?: boolean;
+  message?: string;
+  [k: string]: unknown;
+};
+
+// ------- Validación y helpers -------
+function isContactBody(x: unknown): x is ContactBody {
+  if (typeof x !== "object" || x === null) return false;
+  const b = x as Record<string, unknown>;
+  const nameOk = typeof b.name === "string" && b.name.trim().length >= 2;
+  const emailOk = typeof b.email === "string" && /\S+@\S+\.\S+/.test(b.email);
+  const msgOk = typeof b.message === "string" && b.message.trim().length >= 10;
+  const subjOk = typeof b.subject === "string" && b.subject.trim().length >= 3;
+  return nameOk && emailOk && msgOk && subjOk;
 }
 
-function getSiteUrl() {
-  const explicit = process.env.NEXT_PUBLIC_SITE_URL;
+function getSiteUrl(): string {
+  const explicit = process.env.NEXT_PUBLIC_SITE_URL; // ej. https://landing-page...
   const preview = process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "";
   return explicit || preview || "http://localhost:3000";
 }
 
 // Lee JSON con límite de tamaño (evita payloads enormes)
-async function readJsonWithLimit(req: Request, limitBytes = 50_000) {
+async function readJsonWithLimit(req: Request, limitBytes = 50_000): Promise<unknown> {
   const len = Number(req.headers.get("content-length") || 0);
   if (len && len > limitBytes) throw new Error("Payload too large");
   const text = await req.text();
   if (text.length > limitBytes) throw new Error("Payload too large");
-  return JSON.parse(text || "{}");
+  return text ? JSON.parse(text) : {};
 }
 
+// ------- Handlers -------
 export async function POST(req: Request) {
   try {
     // Acepta sólo JSON
@@ -38,19 +56,24 @@ export async function POST(req: Request) {
       return NextResponse.json({ ok: false, error: "Content-Type inválido" }, { status: 415 });
     }
 
-    const body = await readJsonWithLimit(req, 50_000);
-
+    const parsed = await readJsonWithLimit(req, 50_000);
     // Honeypot anti-bot (campo oculto)
-    if (typeof body?.botcheck === "string" && body.botcheck.trim() !== "") {
+    if (
+      typeof parsed === "object" &&
+      parsed !== null &&
+      typeof (parsed as Record<string, unknown>).botcheck === "string" &&
+      ((parsed as Record<string, unknown>).botcheck as string).trim() !== ""
+    ) {
       return NextResponse.json({ ok: true }, { headers: { "Cache-Control": "no-store" } });
     }
 
-    if (!isValid(body)) {
+    if (!isContactBody(parsed)) {
       return NextResponse.json(
         { ok: false, error: "Datos inválidos" },
         { status: 400, headers: { "Cache-Control": "no-store" } }
       );
     }
+    const body: ContactBody = parsed;
 
     // CSRF estricto: same-origin por Origin/Referer + Sec-Fetch-Site
     const siteUrl = getSiteUrl();
@@ -98,8 +121,9 @@ export async function POST(req: Request) {
     // Timeout + retry sencillo al endpoint externo
     const controller = new AbortController();
     const t = setTimeout(() => controller.abort(), 10_000);
+
     let ok = false;
-    let data: any = null;
+    let data: Web3FormsResponse | null = null;
 
     for (let i = 0; i < 2; i++) {
       try {
@@ -109,11 +133,12 @@ export async function POST(req: Request) {
           body: JSON.stringify(payload),
           signal: controller.signal,
         });
-        data = await res.json().catch(() => ({}));
+        // intenta parsear JSON; si falla, será {}
+        data = (await res.json().catch(() => ({}))) as Web3FormsResponse;
         ok = !!(res.ok && data?.success);
         if (ok) break;
       } catch {
-        // intenta de nuevo una vez
+        // retry loop
       }
     }
     clearTimeout(t);
@@ -127,8 +152,11 @@ export async function POST(req: Request) {
     }
 
     return NextResponse.json({ ok: true }, { headers: { "Cache-Control": "no-store" } });
-  } catch (e: any) {
-    const msg = e?.message === "Payload too large" ? "Payload demasiado grande" : "Error del servidor";
+  } catch (e: unknown) {
+    const msg =
+      e instanceof Error && e.message === "Payload too large"
+        ? "Payload demasiado grande"
+        : "Error del servidor";
     console.error(e);
     return NextResponse.json(
       { ok: false, error: msg },

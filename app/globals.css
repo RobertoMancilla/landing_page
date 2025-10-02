@@ -133,7 +133,7 @@
   --radius-xl: calc(var(--radius) + 4px);
 
   /* (Opcional) si usas charts/sidebar */
-  --color-chart-1: var(--chart-1);
+  /* --color-chart-1: var(--chart-1);
   --color-chart-2: var(--chart-2);
   --color-chart-3: var(--chart-3);
   --color-chart-4: var(--chart-4);
@@ -146,7 +146,7 @@
   --color-sidebar-accent: var(--sidebar-accent);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-ring: var(--sidebar-ring); */
 }
 
 /* =========
@@ -186,18 +186,4 @@ body {
     @apply bg-background text-foreground;
   }
 
-  /* Estilos globales para inputs, select y textarea */
-  input[data-slot="input"],
-  textarea[data-slot="textarea"],
-  button[data-slot="select-trigger"] {
-    border-color: var(--color-primary);
-  }
-
-  input[data-slot="input"]:focus-visible,
-  textarea[data-slot="textarea"]:focus-visible,
-  button[data-slot="select-trigger"]:focus-visible {
-    outline: none;
-    border-color: var(--color-primary);
-    box-shadow: none;
-  }
 }
